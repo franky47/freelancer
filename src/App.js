@@ -2,6 +2,10 @@ import React from 'react'
 import Header from './Header'
 import SidePanel from './Panel'
 import Settings from './Settings'
+import {
+  loadSettingsFromStorage,
+  saveSettingsToStorage
+} from './lib'
 
 const Display = ({ dailyRate, taxRate, numDays }) => {
   const plural = val => (val > 1 ? 's' : '')
@@ -55,6 +59,13 @@ export default class App extends React.Component {
     taxRate: 22
   }
 
+  componentDidMount () {
+    const settings = loadSettingsFromStorage()
+    if (settings) {
+      this.setState(settings)
+    }
+  }
+
   render() {
     const { numDays, panelVisible, dailyRate, taxRate } = this.state
 
@@ -105,14 +116,24 @@ export default class App extends React.Component {
       numDays: Math.max(prevState.numDays - 5, 0)
     }))
   }
+
+  // Settings --
+
   _onEditDailyRate = value => {
     this.setState({
       dailyRate: value
-    })
+    }, this._saveSettings)
   }
   _onEditTaxRate = value => {
     this.setState({
       taxRate: value
-    })
+    }, this._saveSettings)
+  }
+  _saveSettings = () => {
+    const data = {
+      dailyRate: this.state.dailyRate,
+      taxRate: this.state.taxRate
+    }
+    saveSettingsToStorage(data)
   }
 }
