@@ -1,0 +1,29 @@
+aside.panel {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: -100%;
+  background-color: var(--color-panel);
+  opacity: 0.95;
+  transition: all 0.25s ease;
+  padding: 1rem;
+  z-index: 1;
+}
+
+aside.panel.visible {
+  transform: translateX(100%);
+}
+
+aside.panel header {
+  display: flex;
+}
+
+aside.panel header h1 {
+  margin: 0;
+}
+aside.panel header button {
+  margin-left: auto;
+  color: var(--color-text);
+  fill: var(--color-text);
+  font-size: 1rem;
+}

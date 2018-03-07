@@ -1,0 +1,91 @@
+:root {
+  --color-main: #37474f;
+  --color-panel: #263238;
+  --color-text: #cfd8dc;
+  --color-input: #546e7a;
+  --color-button: #546e7a;
+  --color-title: #78909c;
+}
+
+html,
+body {
+  margin: 0;
+  background-color: var(--color-main);
+  color: var(--color-text);
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html,
+body,
+#root,
+main {
+  height: 100%;
+  overflow: hidden;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+label {
+  display: block;
+  margin: 1.5rem 0 0.5rem;
+}
+input {
+  display: block;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  background: var(--color-input);
+  color: var(--color-text);
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  width: 100%;
+}
+
+main {
+  display: grid;
+  grid-template-rows: 3rem 1fr 4fr;
+  grid-gap: 1rem;
+}
+
+section.controls {
+  display: flex;
+  flex-direction: row;
+  padding: 0.25rem;
+}
+section.display {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+section.display h1 {
+  font-size: 3rem;
+}
+section.display h3 {
+  font-size: 2rem;
+}
+
+section.controls button {
+  flex: 1;
+  background: none;
+  background-color: var(--color-button);
+  color: var(--color-text);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 2rem;
+  margin: 0.25rem;
+}
+section.controls button:disabled {
+  opacity: 0.5;
+}

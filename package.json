@@ -1,0 +1,26 @@
+{
+  "name": "freelancer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "react-scripts": "1.1.0"
+  },
+  "devDependencies": {
+    "serve": "^6.5.2",
+    "surge": "^0.20.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "fix:surge-prod": "cp ./build/index.html ./build/200.html",
+    "deploy": "surge -p ./build -d https://freelancer-calc.surge.sh",
+    "release": "yarn build && yarn fix:surge-prod && yarn deploy"
+  }
+}
